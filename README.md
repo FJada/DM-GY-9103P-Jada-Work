@@ -1,6 +1,5 @@
-# DM-GY-9103P
 
-# Syllabus
+# Syllabus DM-GY-9103P
 
 ## Tandon School of Engineering of New York University
 
