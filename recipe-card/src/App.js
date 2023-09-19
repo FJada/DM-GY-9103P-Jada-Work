@@ -1,7 +1,8 @@
 import React from 'react'
+import RecipeCard from './RecipeCard'
 
 function App() {
-  return <div>Hello App!</div>
+  return <RecipeCard/>
 }
 
 export default App
