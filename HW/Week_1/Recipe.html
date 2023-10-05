@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<style>
+    .recipe_card {
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(240, 241, 243, 1);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(240, 241, 243, 1);
+        box-shadow: 0px 0px 20px 1px rgba(240, 241, 243, 1);
+        border: 1px solid #f0f1f3;
+        width: 1000px;
+        margin: 50px auto;
+    }
+
+    .recipe_body {
+        background: #fff;
+        font: 13px 'Open Sans', sans-serif;
+        color: #222;
+    }
+
+    .recipe_ingredients {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-left: 10px;
+        column-count: 1;
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        li:before {
+            content: '\2022';
+            color: #eb9376;
+            margin-right: 5px;
+        }
+    }
+
+    /* Create two equal columns that sits next to each other */
+    .column {
+        flex: 50%;
+        padding: 10px;
+        height: 300px;
+    }
+
+    .title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 60px;
+        font-weight: 300;
+        line-height: 60px;
+    }
+</style>
+
+<div class="recipe_card">
+    <div class="recipe_body">
+        <h1 class="title" style="text-align:center;">Recipe for Banana Nut Bread </h1>
+        <div class="bread_img">
+            <img src="Best-Banana-Nut-Bread-Recipe.jpg">
+        </div>
+
+        <div class="">
+
+            <div class="recipe_ingredients">
+                <div class="column">
+                    <h2> Ingredients </h2>
+                    <ul>
+                        <li>1 &frac14; cups unbleached all-purpose flour</li>
+                        <li>1 teaspoon baking soda</li>
+                        <li>&frac12; teaspoon fine salt</li>
+                        <li>2 large eggs, at room temperature</li>
+                        <li>&frac12; teaspoon vanilla extract</li>
+                        <li>&frac12; cup unsalted butter, at room temperature</li>
+                        <li>1 cup sugar</li>
+                        <li>3 very ripe bananas, peeled, and mashed with a fork (about 1 cup)</li>
+                        <li>&frac12; cup toasted walnut pieces</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h2>Instructions</h2>
+                    <ol>
+                        <li>Sift the flour, baking soda, and salt into a medium bowl, set aside. Whisk the eggs and
+                            vanilla
+                            together in a liquid measuring cup with a spout, set aside. Lightly brush a 9 by 5 by 3-inch
+                            loaf pan with butter. Preheat the oven to 350 degrees F. </li>
+                        <li>In a standing mixer fitted with the paddle attachment or with an electric hand-held mixer,
+                            cream
+                            the butter and sugar until light and fluffy. Gradually pour the egg mixture into the butter
+                            while mixing until incorporated. Add the bananas (the mixture will appear to be curdled, so
+                            don't worry), and remove the bowl from the mixer. </li>
+                        <li>With a rubber spatula, mix in the flour mixture until just incorporated. Fold in the nuts
+                            and
+                            transfer the batter to the prepared pan. Bake for 55 minutes or until a toothpick inserted
+                            into
+                            the center of the bread comes out clean. Cool the bread in the pan on a wire rack for 5
+                            minutes.
+                            Turn the bread out of the pan and let cool completely on the rack. Wrap in plastic wrap. The
+                            banana bread is best if served the next day.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
