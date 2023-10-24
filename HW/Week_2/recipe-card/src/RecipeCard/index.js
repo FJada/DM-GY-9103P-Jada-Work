@@ -15,7 +15,6 @@ export default function RecipeCard() {
     return (
         <Card>
             <RecipeImg imgSrc={RECIPE.imgSrc} />
-
             <div>
                 <RecipeInfo title={RECIPE.title} description={RECIPE.description} />
                 <IngredientsList ingredients={RECIPE.ingredients} />
