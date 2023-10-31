@@ -108,7 +108,7 @@ const Quiz = () => {
 
   return (
     <div>
-      <h1>Guess the U.S. State</h1>
+      <h1 className="header" >Guess the U.S. State</h1>
      
       {randomState && <p>Guess: {randomState}</p>}
       
@@ -160,7 +160,7 @@ const Quiz = () => {
       </ComposableMap>
 
       <Link to="/">
-        <button>Quit</button>
+        <button className="start-button">Quit</button>
       </Link>
     
       
