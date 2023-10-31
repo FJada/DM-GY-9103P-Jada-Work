@@ -68,7 +68,7 @@ const Quiz = () => {
         // Increment incorrect guesses count
         setIncorrectGuesses(prevCount => prevCount + 1);
   
-        if (incorrectGuesses === 2) {
+        if (incorrectGuesses == 2) {
           // Game ends after 3 incorrect guesses
           alert("You've made 3 incorrect guesses. Game over!");
           // Reset the game
