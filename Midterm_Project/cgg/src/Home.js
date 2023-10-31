@@ -1,55 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-//import WorldMap from './WorldMap';
-
-
-const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-
-
-// const WorldMap = () => {
-//   return (
-//     <ComposableMap>
-//       <Geographies geography={geoUrl}>
-//         {({ geographies }) =>
-//           geographies.map(geo => (
-//             <Geography
-//               key={geo.rsmKey}
-//               geography={geo}
-//               style={{
-//                 default: { fill: "#D6D6DA", outline: "none" },
-//                 hover: { fill: "#F53", outline: "none" },
-//                 pressed: { fill: "#E42", outline: "none" }
-//               }}
-//             />
-//           ))
-//         }
-//       </Geographies>
-//     </ComposableMap>
-//   );
-// };
-
-
+import "./styles.css";
+const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome to the Quiz Game</h1>
+    <div className="home-container">
+      <div>
+      <h1 className="header">Welcome to the Quiz Game</h1>
+      
+      <Link to="/quiz">
+      <button className="start-button">Start Quiz</button>
+    </Link>
+      </div>
      
-
-      <ComposableMap>
-      <Geographies geography="">
+    
+  
+    <ComposableMap className="world-map">
+      <Geographies geography={geoUrl}>
         {({ geographies }) =>
-          geographies.map((geo) => (
-            <Geography key={geo.rsmKey} geography={geo} />
+          geographies.map(geo => (
+            <Geography
+              key={geo.rsmKey}
+              geography={geo}
+              style={{
+                default: { fill: "#A0A0A0", outline: "none" },
+                hover: { fill: "#FFD700", outline: "none" },
+                pressed: { fill: "#FF4500", outline: "none" }
+              }}
+            />
           ))
         }
       </Geographies>
     </ComposableMap>
-      <Link to="/quiz">
-        <button>Start Quiz</button>
-      </Link>
-    </div>
+    
+  </div>
   );
 }
 
