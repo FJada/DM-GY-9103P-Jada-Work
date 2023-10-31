@@ -15,6 +15,7 @@ const Quiz = () => {
   const [incorrectGuesses, setIncorrectGuesses] = useState(0);
   const [timer, setTimer] = useState(60); // Set timer to 60 seconds initially
   const [correctGuessCount, setCorrectGuessCount] = useState(0);
+  const [gameActive, setGameActive] = useState(true);
  
 
   // used to initalize a time that counts down from 1 minute 
@@ -38,6 +39,7 @@ const Quiz = () => {
 
 
   const handleStateClick = (geo) => {
+    if (!gameActive) return;
     const clickedState = geo.properties.name;
   
     if (!correctGuesses.includes(clickedState)) {
@@ -64,7 +66,7 @@ const Quiz = () => {
         // Increment incorrect guesses count
         setIncorrectGuesses(prevCount => prevCount + 1);
   
-        if (incorrectGuesses == 2) {
+        if (incorrectGuesses >= 2) {
           // Game ends after 3 incorrect guesses
           alert("You've made 3 incorrect guesses. Game over!");
           // Reset the game
@@ -72,6 +74,7 @@ const Quiz = () => {
           setGuessedStates([]);
           setIncorrectGuesses(0);
           setCorrectGuessCount(0);
+          setGameActive(false);
         }
       }
       //updates guessed states 
@@ -95,6 +98,7 @@ const Quiz = () => {
       setIncorrectGuesses(0);
       setCorrectGuessCount(0);
       setTimer(60);
+      setGameActive(true);
     }
   };
 
