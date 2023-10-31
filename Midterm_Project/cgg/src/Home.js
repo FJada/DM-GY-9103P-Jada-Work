@@ -9,14 +9,10 @@ const HomePage = () => {
     <div className="home-container">
       <div>
       <h1 className="header">Welcome to the Quiz Game</h1>
-      
       <Link to="/quiz">
       <button className="start-button">Start Quiz</button>
     </Link>
       </div>
-     
-    
-  
     <ComposableMap className="world-map">
       <Geographies geography={geoUrl}>
         {({ geographies }) =>
@@ -38,5 +34,4 @@ const HomePage = () => {
   </div>
   );
 }
-
 export default HomePage;

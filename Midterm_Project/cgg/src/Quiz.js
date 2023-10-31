@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import {STATES} from './states-data';
 import { Link } from 'react-router-dom';
-
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 const Quiz = () => {
@@ -18,13 +17,10 @@ const Quiz = () => {
   const [correctGuessCount, setCorrectGuessCount] = useState(0);
  
 
-
-
   // used to initalize a time that counts down from 1 minute 
   useEffect(() => {
     const timerInterval = setInterval(updateTimer, 1000);
     
-  
     // This cleanup function will clear the timer interval when the component unmounts
     return () => {
       clearInterval(timerInterval);
@@ -76,7 +72,6 @@ const Quiz = () => {
           setGuessedStates([]);
           setIncorrectGuesses(0);
           setCorrectGuessCount(0);
-
         }
       }
       //updates guessed states 
@@ -84,8 +79,7 @@ const Quiz = () => {
     }
   };
   
-  
-
+  // creates a timer that counts down and when the correct guesses reaches 3 it ends the game or if the timer runs out 
   const updateTimer = () => {
     if (timer > 0) {
       setTimer(prevTimer => prevTimer - 1);
@@ -95,30 +89,25 @@ const Quiz = () => {
       } else {
         alert(`Time's up! You guessed ${correctGuessCount} states correctly.`);
       }
-
       // Reset the game
-    setCorrectGuesses([]);
-    setGuessedStates([]);
-    setIncorrectGuesses(0);
-    setCorrectGuessCount(0);
-    setTimer(60);
-
+      setCorrectGuesses([]);
+      setGuessedStates([]);
+      setIncorrectGuesses(0);
+      setCorrectGuessCount(0);
+      setTimer(60);
     }
   };
 
   return (
     <div>
       <h1 className="header" >Guess the U.S. State</h1>
-     
       {randomState && <p>Guess: {randomState}</p>}
-      
       {selectedState && <p>You selected: {selectedState}</p>}
       {isCorrect !== null && (
         <p>{isCorrect ? 'Correct!' : 'Incorrect. Try again!'}</p>
       )}
        <p>Time remaining: {timer} seconds</p>
        <p>Incorrect Guesses: {incorrectGuesses}</p>
-
       <ComposableMap projection="geoAlbersUsa">
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
@@ -162,8 +151,6 @@ const Quiz = () => {
       <Link to="/">
         <button className="start-button">Quit</button>
       </Link>
-    
-      
     </div>
   );
 };
