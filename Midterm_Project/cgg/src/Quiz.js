@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import {STATES} from './states-data'
+import {STATES} from './states-data';
+import { Link } from 'react-router-dom';
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+
 
 const Quiz = () => {
   // holds single variables and uses usestate hook to set to null at start and is used to re-render the actions of the quiz
@@ -102,6 +104,10 @@ const Quiz = () => {
           }
         </Geographies>
       </ComposableMap>
+
+      <Link to="/">
+        <button>Quit</button>
+      </Link>
       
     </div>
   );
