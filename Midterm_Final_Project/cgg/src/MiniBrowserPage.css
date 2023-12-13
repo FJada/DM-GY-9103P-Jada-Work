@@ -1,0 +1,77 @@
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color:#dcb991;
+  }
+  
+  .mini-browser {
+    width: 800px; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #add8e6;
+  }
+  
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    background-color: #f1f1f1;
+  }
+  
+  .buttons {
+    display: flex;
+  }
+  
+  .button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .close {
+    background-color: #ff5f56; /* Red */
+  }
+  
+  .minimize {
+    background-color: #ffbd2e; /* Yellow */
+  }
+  
+  .maximize {
+    background-color: #27c93f; /* Green */
+  }
+  
+  .address-bar {
+    flex: 1;
+    margin-left: 10px;
+  }
+  
+  .address-bar span {
+    font-size: 14px;
+  }
+  
+  .browser-content {
+    padding: 20px;
+  }
+  
+  /* Additional styles for your home content */
+  .home-container {
+    /* Add any specific styles for your home content here */
+  }
+  
+  .header {
+    /* Styles for your header */
+  }
+  
+  .start-button {
+    /* Styles for your start button */
+  }
+  
+  .world-map {
+    /* Styles for your world map */
+  }
+  

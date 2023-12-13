@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { Link } from 'react-router-dom';
 
-const QuizModule = ({ geoUrl, countries, onGameEnd }) => {
+const QuizModule = ({ geoUrl, countries}) => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [randomCountry, setRandomCountry] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
@@ -13,6 +13,7 @@ const QuizModule = ({ geoUrl, countries, onGameEnd }) => {
   const [correctGuessCount, setCorrectGuessCount] = useState(0);
   const [gameActive, setGameActive] = useState(true);
 
+
   useEffect(() => {
     const timerInterval = setInterval(updateTimer, 1000);
 
@@ -22,51 +23,52 @@ const QuizModule = ({ geoUrl, countries, onGameEnd }) => {
   }, [timer]);
 
   useEffect(() => {
-    const availableCountries = countries.filter(country => !guessedCountries.includes(country));
+    const availableCountries = countries.names.filter(country => !guessedCountries.includes(country));
     if (availableCountries.length > 0 && !selectedCountry) {
-      const randomIndex = Math.floor(Math.random() * countries.length);
-      setRandomCountry(countries[randomIndex]);
+      const randomIndex = Math.floor(Math.random() * countries.names.length);
+      setRandomCountry(countries.names[randomIndex]);
     }
   }, [guessedCountries, selectedCountry]);
 
+
+
   const handleCountryClick = (geo) => {
-    if (!gameActive) return;
-    const clickedCountry = geo.properties.NAME;
+  if (!gameActive) return;
+  const clickedCountry = geo.properties.name;
 
-    if (!correctGuesses.includes(clickedCountry)) {
-      setSelectedCountry(clickedCountry);
+  if (!correctGuesses.includes(clickedCountry)) {
+    setSelectedCountry(clickedCountry);
 
-      if (clickedCountry === randomCountry) {
-        setIsCorrect(true);
-        setCorrectGuesses([...correctGuesses, clickedCountry]);
-        setCorrectGuessCount(prevCount => prevCount + 1);
+    if (clickedCountry === randomCountry) {
+      setIsCorrect(true);
+      setCorrectGuesses([...correctGuesses, clickedCountry]);
+      setCorrectGuessCount(prevCount => prevCount + 1);
 
-        const randomIndex = Math.floor(Math.random() * countries.length);
-        setRandomCountry(countries[randomIndex]);
+      const randomIndex = Math.floor(Math.random() * countries.names.length);
+      setRandomCountry(countries.names[randomIndex]);
 
-        setTimeout(() => {
-          setSelectedCountry(null);
-          setIsCorrect(null);
-        }, 3000);
-      } else {
-        setIsCorrect(false);
-
-        setIncorrectGuesses(prevCount => prevCount + 1);
-
-        if (incorrectGuesses >= 2) {
-          alert("You've made 3 incorrect guesses. Game over!");
-          setCorrectGuesses([]);
-          setGuessedCountries([]);
-          setIncorrectGuesses(0);
-          setCorrectGuessCount(0);
-          setGameActive(false);
-          onGameEnd();
-        }
+      setTimeout(() => {
+        setSelectedCountry(null);
+        setIsCorrect(null);
+      }, 3000);
+    } else {
+      setIsCorrect(false);
+      setIncorrectGuesses(prevCount => prevCount + 1);
+      if (incorrectGuesses >= 2) {
+        alert("You've made 3 incorrect guesses. Game over!");
+        setCorrectGuesses([]);
+        setGuessedCountries([]);
+        setIncorrectGuesses(0);
+        setCorrectGuessCount(0);
+        setGameActive(false);
       }
-
-      setGuessedCountries([...guessedCountries, clickedCountry]);
     }
-  };
+
+    setGuessedCountries([...guessedCountries, clickedCountry]);
+  }
+};
+
+
 
   const updateTimer = () => {
     if (timer > 0) {
@@ -77,18 +79,18 @@ const QuizModule = ({ geoUrl, countries, onGameEnd }) => {
       } else {
         alert(`Time's up! You guessed ${correctGuessCount} countries correctly.`);
       }
-
       setCorrectGuesses([]);
       setGuessedCountries([]);
       setIncorrectGuesses(0);
       setCorrectGuessCount(0);
       setTimer(60);
       setGameActive(true);
-      onGameEnd();
+     
     }
   };
 
   return (
+   
     <div>
       <h1 className="header">Guess the Country</h1>
       {randomCountry && <p>Guess: {randomCountry}</p>}
@@ -98,7 +100,9 @@ const QuizModule = ({ geoUrl, countries, onGameEnd }) => {
       )}
       <p>Time remaining: {timer} seconds</p>
       <p>Incorrect Guesses: {incorrectGuesses}</p>
-      <ComposableMap projection="geoMercator" projectionConfig={{ scale: 250 }}>
+      <ComposableMap projection="geoAlbersUsa" projectionConfig={{
+    scale: 900,
+    center: [0, 50],}}> 
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => (
@@ -108,11 +112,11 @@ const QuizModule = ({ geoUrl, countries, onGameEnd }) => {
                 onClick={() => handleCountryClick(geo)}
                 style={{
                   default: {
-                    fill: selectedCountry === geo.properties.NAME && isCorrect
+                    fill: selectedCountry === geo.properties.name && isCorrect
                       ? 'green'
-                      : correctGuesses.includes(geo.properties.NAME)
+                      : correctGuesses.includes(geo.properties.name)
                       ? 'green'
-                      : selectedCountry === geo.properties.NAME && !isCorrect
+                      : selectedCountry === geo.properties.name && !isCorrect
                       ? 'red'
                       : '#ECEFF1',
                     stroke: '#607D8B',
@@ -141,6 +145,7 @@ const QuizModule = ({ geoUrl, countries, onGameEnd }) => {
         <button className="start-button">Quit</button>
       </Link>
     </div>
+    
   );
 };
 
