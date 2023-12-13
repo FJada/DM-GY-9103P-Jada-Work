@@ -31,10 +31,22 @@ const QuizModule = ({ geoUrl, countries}) => {
   }, [guessedCountries, selectedCountry]);
 
 
+  const handleGameWon = () => {
+    const minutes = Math.floor((60 - timer) / 60);
+    const seconds = (60 - timer) % 60;
+  
+    alert(`Congratulations! You won!\nTime taken: ${minutes} minutes and ${seconds} seconds\nIncorrect guesses: ${incorrectGuesses}`);
+  };
 
   const handleCountryClick = (geo) => {
   if (!gameActive) return;
   const clickedCountry = geo.properties.name;
+
+  if (correctGuessCount === countries.names.length) {
+    // If the user has guessed all countries, the game is won
+    handleGameWon();
+    
+  }
 
   if (!correctGuesses.includes(clickedCountry)) {
     setSelectedCountry(clickedCountry);
@@ -67,8 +79,6 @@ const QuizModule = ({ geoUrl, countries}) => {
     setGuessedCountries([...guessedCountries, clickedCountry]);
   }
 };
-
-
 
   const updateTimer = () => {
     if (timer > 0) {

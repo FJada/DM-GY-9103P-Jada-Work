@@ -1,5 +1,5 @@
 import React from 'react';
-import './MiniBrowserPage.css'; // Import the new CSS file
+import './MiniBrowserPage.css';
 
 const BrowserContainer = ({ children }) => {
   return (

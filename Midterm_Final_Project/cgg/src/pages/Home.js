@@ -1,5 +1,3 @@
-// 
-// MiniBrowserPage.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';

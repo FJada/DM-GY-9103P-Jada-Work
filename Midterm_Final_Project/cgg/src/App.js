@@ -4,8 +4,6 @@ import HomePage from './pages/Home';
 import UsaStatesQuiz from './pages/Quiz-Usa-States.js';
 import  GameMenu from './pages/Game-Menu';
 
-// import Route from './components/Route'
-
 function App() {
   return (
     <Router>
