@@ -5,6 +5,7 @@
     justify-content: center;
     height: 100vh;
     background-color:#dcb991;
+    
   }
   
   .mini-browser {
@@ -13,6 +14,7 @@
     border-radius: 8px;
     overflow: hidden;
     background-color: #add8e6;
+    display:grid;
   }
   
   .browser-bar {
@@ -24,6 +26,7 @@
   
   .buttons {
     display: flex;
+   
   }
   
   .button {
@@ -57,21 +60,3 @@
   .browser-content {
     padding: 20px;
   }
-  
-  /* Additional styles for your home content */
-  .home-container {
-    /* Add any specific styles for your home content here */
-  }
-  
-  .header {
-    /* Styles for your header */
-  }
-  
-  .start-button {
-    /* Styles for your start button */
-  }
-  
-  .world-map {
-    /* Styles for your world map */
-  }
-  
