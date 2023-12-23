@@ -9,7 +9,7 @@ const initialState = {
   correctGuesses: [],
   guessedCountries: [],
   incorrectGuesses: 0,
-  timer: 60,
+  timer: 90,
   correctGuessCount: 0,
   gameActive: true,
 };
@@ -64,7 +64,7 @@ const QuizModule = ({ geoUrl, countries }) => {
 
     if (state.correctGuessCount === countries.names.length) {
       // If the user has guessed all countries, the game is won
-      handleGameWon();
+    gameWon();
       return;
     }
 
@@ -116,16 +116,15 @@ const QuizModule = ({ geoUrl, countries }) => {
     }
   };
 
-  const handleGameWon = () => {
+  const gameWon = () => {
     const minutes = Math.floor((60 - state.timer) / 60);
     const seconds = (60 - state.timer) % 60;
-
     alert(`Congratulations! You won!\nTime taken: ${minutes} minutes and ${seconds} seconds\nIncorrect guesses: ${state.incorrectGuesses}`);
   };
 
   return (
     <div>
-      <h1 className="header">Guess the Country</h1>
+      <h2 className="header">Guess the Country</h2>
       {state.randomCountry && <p>Guess: {state.randomCountry}</p>}
       {state.selectedCountry && <p>You selected: {state.selectedCountry}</p>}
       {state.isCorrect !== null && (
@@ -133,7 +132,7 @@ const QuizModule = ({ geoUrl, countries }) => {
       )}
       <p>Time remaining: {state.timer} seconds</p>
       <p>Incorrect Guesses: {state.incorrectGuesses}</p>
-      <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 900, center: [0, 50] }}>
+      <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1100, center: [0, 100] }}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
             geographies.map((geo) => (

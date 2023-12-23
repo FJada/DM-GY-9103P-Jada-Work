@@ -14,7 +14,6 @@ const GameMenu = () => {
                 <Link to="/quiz-usa-states">
                   <button className="start-button">States</button>
                 </Link>
-                
               </div>
             </div>
           </div>

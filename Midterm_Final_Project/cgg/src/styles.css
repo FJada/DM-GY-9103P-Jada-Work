@@ -1,7 +1,7 @@
 .home-container {
     text-align: center;
-    display:grid;
-
+    width: 85%;
+    align-items: center;
   }
   
   .header {
@@ -9,7 +9,6 @@
     margin-bottom: 20px;
     
   }
-  
   .world-map {
     width: 80%;
   }
