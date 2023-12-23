@@ -124,14 +124,15 @@ const QuizModule = ({ geoUrl, countries }) => {
 
   return (
     <div>
-      <h2 className="header">Guess the Country</h2>
-      {state.randomCountry && <p>Guess: {state.randomCountry}</p>}
-      {state.selectedCountry && <p>You selected: {state.selectedCountry}</p>}
+       <h2 className="text-2xl font-bold mb-4">Guess the Country</h2>
+      {state.randomCountry && <p className="mb-2">Guess: {state.randomCountry}</p>}
+      {state.selectedCountry && <p className="mb-2">You selected: {state.selectedCountry}</p>}
       {state.isCorrect !== null && (
-        <p>{state.isCorrect ? 'Correct!' : 'Incorrect. Try again!'}</p>
+        <p className="mb-2">{state.isCorrect ? 'Correct!' : 'Incorrect. Try again!'}</p>
       )}
-      <p>Time remaining: {state.timer} seconds</p>
-      <p>Incorrect Guesses: {state.incorrectGuesses}</p>
+      <p className="mb-2">Time remaining: {state.timer} seconds</p>
+      <p className="mb-2">Incorrect Guesses: {state.incorrectGuesses}</p>
+
       <ComposableMap projection="geoAlbersUsa" projectionConfig={{ scale: 1100, center: [0, 100] }}>
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
